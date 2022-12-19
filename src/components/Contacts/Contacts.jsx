@@ -1,5 +1,7 @@
-import { Contact, ContactsList, DeleteButton } from './Contacts.styled';
+import PropTypes from 'prop-types';
 import { capitalLetter } from 'helpers';
+
+import { Contact, ContactsList, DeleteButton } from './Contacts.styled';
 
 export const Contacts = ({ contacts, deleteContact }) => {
     return (
@@ -20,4 +22,15 @@ export const Contacts = ({ contacts, deleteContact }) => {
             })}
         </ContactsList>
     );
+};
+
+Contacts.propTypes = {
+    contacts: PropTypes.arrayOf(
+        PropTypes.exact({
+            id: PropTypes.string,
+            name: PropTypes.string,
+            number: PropTypes.string,
+        }).isRequired
+    ).isRequired,
+    deleteContact: PropTypes.func.isRequired,
 };

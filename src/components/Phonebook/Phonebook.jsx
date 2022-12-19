@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { BiXCircle } from 'react-icons/bi';
+import PropTypes from 'prop-types';
 
 import { errorNotification } from 'helpers';
 
@@ -13,6 +14,17 @@ import {
 import { Box } from 'components/Box';
 
 export class Phonebook extends Component {
+    static propTypes = {
+        existedContacts: PropTypes.arrayOf(
+            PropTypes.exact({
+                id: PropTypes.string,
+                name: PropTypes.string,
+                number: PropTypes.string,
+            }).isRequired
+        ).isRequired,
+        addContact: PropTypes.func.isRequired,
+    };
+
     state = {
         name: '',
         number: '',
